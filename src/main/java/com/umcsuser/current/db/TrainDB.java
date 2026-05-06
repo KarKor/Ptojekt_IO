@@ -2,6 +2,7 @@ package com.umcsuser.current.db;
 
 import com.umcsuser.current.models.Train;
 
+import java.io.*;
 import java.util.List;
 
 public class TrainDB implements Database{
@@ -9,6 +10,14 @@ public class TrainDB implements Database{
 
     @Override
     public void readDatabase(String filePath) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String linia;
+            while ((linia = br.readLine()) != null) {
+                System.out.println(linia);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

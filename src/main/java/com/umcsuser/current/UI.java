@@ -7,10 +7,7 @@ public class UI {
     private Admin admin;
     private Conductor conductor;
 
-    public  User login(String login, String password){
-         User user;
-         return user;
-    }
+    public  User login(String login, String password){}
 
     public void start(User user){}
 }

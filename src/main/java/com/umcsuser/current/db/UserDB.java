@@ -1,12 +1,12 @@
 package com.umcsuser.current.db;
 
-import com.umcsuser.current.models.Ticket;
+import com.umcsuser.current.users.User;
 
 import java.io.*;
 import java.util.List;
 
-public class TicketDB implements Database{
-    private List<Ticket> tickets;
+public class UserDB implements Database{
+    private List<User> users;
 
     @Override
     public void readDatabase(String filePath) {
@@ -25,7 +25,11 @@ public class TicketDB implements Database{
 
     }
 
-    public void addTicket(Ticket ticket){}
+    public void addUser(User user){}
 
-    public void removeTicket(String ticketID){}
+    public void removeUser(String userID){}
+
+    public List<User> getUsers() {
+        return users;
+    }
 }

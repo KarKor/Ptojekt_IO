@@ -35,4 +35,13 @@ public class Transfer {
     public String getStartTime() {
         return startTime;
     }
+
+    @Override
+    public String toString() {
+        return "Transfer number " + ID + " from " + startLocation + " to " + endLocation + "\ndeparting at " + startTime + "\narriving at" + endTime;
+    }
+
+    public String toCSV(){
+        return this.startTime+';'+this.endTime+';'+this.startLocation+';'+this.endLocation+';'+this.ID+';'+this.trainID;
+    }
 }
