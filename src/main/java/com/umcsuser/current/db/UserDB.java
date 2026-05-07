@@ -61,7 +61,7 @@ public class UserDB implements Database{
         saveDatabase("users.csv");
     }
 
-    public List<User> getUsers() {
-        return users;
+    public ArrayList<User> getUsers() {
+        return (ArrayList<User>) users;
     }
 }

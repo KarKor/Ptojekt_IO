@@ -5,7 +5,7 @@ import com.umcsuser.current.db.UserDB;
 
 import java.util.*;
 
-public abstract class User {
+public class User {
     private String ID;
     private String login;
     private String password;
