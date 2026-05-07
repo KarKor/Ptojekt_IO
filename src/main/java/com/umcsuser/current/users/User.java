@@ -50,4 +50,8 @@ public abstract class User {
         }
         return false;
     }
+
+    public String toCSV(){
+        return this.ID+';'+this.login+';'+this.password+';'+this.role;
+    }
 }

@@ -1,6 +1,7 @@
 package com.umcsuser.current.db;
 
 import com.umcsuser.current.models.Train;
+import com.umcsuser.current.models.Transfer;
 
 import java.io.*;
 import java.util.List;
@@ -13,7 +14,10 @@ public class TrainDB implements Database{
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String linia;
             while ((linia = br.readLine()) != null) {
-                System.out.println(linia);
+                String[] parts = linia.split(";");
+                trains.add(
+                        new Train(parts[0], parts[1], parts[2]
+                ));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -23,11 +27,24 @@ public class TrainDB implements Database{
 
     @Override
     public void saveDatabase(String filePath) {
-
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            for(Train train : trains){
+                writer.write(train.toCSV());
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void addTrain(Train train){}
+    public void addTrain(Train train){
+        trains.add(train);
+        saveDatabase("trains.csv");
+    }
 
-    public void removeTrain(String trainID){}
+    public void removeTrain(String trainID){
+        trains.removeIf(train -> train.getID().equals(trainID));
+        saveDatabase("trains.csv");
+    }
 
 }
