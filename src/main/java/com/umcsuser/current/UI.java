@@ -13,17 +13,15 @@ public class UI {
     private Admin admin;
     private Conductor conductor;
 
-    public  User login(/*String login, String password*/){
-        System.out.println("Enter your username and password");
+    public  User login(){
+        System.out.println("Enter your login and password");
         Scanner sc = new Scanner(System.in);
         String login = sc.nextLine();
         String password = sc.nextLine();
         ArrayList<User> users1 = users.getUsers();
         for(User user : users1){
             if(user.getLogin().equals(login) && user.getPassword().equals(password)){
-                if(user.getPassword().equals(password)){
-                    return user;
-                }
+                return user;
             }
         }
         return null;

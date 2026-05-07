@@ -1,11 +1,9 @@
 package com.umcsuser.current.db;
 
-import com.umcsuser.current.models.Transfer;
 import com.umcsuser.current.users.*;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class UserDB implements Database{

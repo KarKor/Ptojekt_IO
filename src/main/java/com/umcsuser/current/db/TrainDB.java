@@ -1,13 +1,13 @@
 package com.umcsuser.current.db;
 
 import com.umcsuser.current.models.Train;
-import com.umcsuser.current.models.Transfer;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TrainDB implements Database{
-    private List<Train> trains;
+    private final List<Train> trains=new ArrayList<>();
 
     @Override
     public void readDatabase(String filePath) {

@@ -1,7 +1,6 @@
 package com.umcsuser.current.db;
 
 import com.umcsuser.current.models.Ticket;
-import com.umcsuser.current.models.Transfer;
 
 import java.io.*;
 import java.util.ArrayList;
