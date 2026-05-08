@@ -1,13 +1,45 @@
 package com.umcsuser.current;
 
+import com.umcsuser.current.db.UserDB;
 import com.umcsuser.current.users.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class UI {
+    private UserDB users;
     private Passenger passenger;
     private Admin admin;
     private Conductor conductor;
 
-    public  User login(String login, String password){}
+    public  User login(){
+        System.out.println("Enter your login and password");
+        Scanner sc = new Scanner(System.in);
+        String login = sc.nextLine();
+        String password = sc.nextLine();
+        ArrayList<User> users1 = users.getUsers();
+        for(User user : users1){
+            if(user.getLogin().equals(login)){
+                if (user.getPassword().equals(password)){
+                    if (user.getRole().equals(Role.ADMIN)){
+                        return new Admin(user.getLogin(), user.getPassword(), user.getRole());
+                    }
+                    if (user.getRole().equals(Role.CONDUCTOR)){
+                        return new Conductor(user.getLogin(), user.getPassword(), user.getRole());
+                    }
+                    if (user.getRole().equals(Role.PASSENGER)){
+                        return new Passenger(user.getLogin(), user.getPassword(), user.getRole());
+                    }
+                } else {
+                    System.out.println("Incorrect password");
+                    return null;
+                }
+            }
+        }
+        return null;
+
+    }
 
     public void start(User user){}
 }

@@ -20,4 +20,12 @@ public class Train {
         conductors=new ArrayList<>();
         passengers=new ArrayList<>();
     }
+
+    public String getID() {
+        return ID;
+    }
+
+    public String toCSV(){
+        return this.ID+';'+this.model+';'+this.company+';';
+    }
 }
