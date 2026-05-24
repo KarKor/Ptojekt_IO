@@ -35,6 +35,10 @@ public abstract class User {
         return role;
     }
 
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
     public void viewTransfers(){
         transfers.viewTransfers();
     }
@@ -49,5 +53,9 @@ public abstract class User {
             }
         }
         return false;
+    }
+
+    public String toCSV() {
+        return this.ID + ";" + this.login + ";" + this.password + ";" + this.role.name() + ";null";
     }
 }

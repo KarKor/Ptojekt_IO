@@ -3,12 +3,12 @@ package com.umcsuser.current.models;
 public class Ticket {
     private String ID;
     private int price;
-    private Transfer transfer;
+    private String transferID;
 
-    public Ticket(String ID, int price, Transfer transfer) {
+    public Ticket(String ID, int price, String transferID) {
         this.ID = ID;
         this.price = price;
-        this.transfer = transfer;
+        this.transferID = transferID;
     }
 
     public String getID() {
@@ -17,5 +17,9 @@ public class Ticket {
 
     public int getPrice() {
         return price;
+    }
+
+    public String  toCSV() {
+        return this.ID + ";" + this.price + ";" + this.transferID;
     }
 }
