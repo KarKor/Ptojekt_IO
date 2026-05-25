@@ -7,5 +7,5 @@ public class Conductor extends User{
         super(login, password, role);
     }
 
-    public Fine giveFine(String passengerID){}
+    //public Fine giveFine(String passengerID){}
 }

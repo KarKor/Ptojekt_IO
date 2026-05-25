@@ -15,19 +15,19 @@ public class UserDB implements Database{
             String linia;
             while ((linia = br.readLine()) != null) {
                 String[] parts = linia.split(";");
-                if(Role.valueOf(parts[2])==Role.ADMIN) {
+                if(Role.valueOf(parts[3])==Role.ADMIN) {
                     users.add(new Admin(
-                            parts[0], parts[1], Role.valueOf(parts[2])
+                            parts[1], parts[2], Role.valueOf(parts[3])
                     ));
                 }
-                if(Role.valueOf(parts[2])==Role.CONDUCTOR) {
+                if(Role.valueOf(parts[3])==Role.CONDUCTOR) {
                     users.add(new Conductor(
-                            parts[0], parts[1], Role.valueOf(parts[2])
+                            parts[1], parts[2], Role.valueOf(parts[3])
                     ));
                 }
-                if(Role.valueOf(parts[2])==Role.PASSENGER) {
+                if(Role.valueOf(parts[3])==Role.PASSENGER) {
                     users.add(new Passenger(
-                            parts[0], parts[1], Role.valueOf(parts[2])
+                            parts[1], parts[2], Role.valueOf(parts[3])
                     ));
                 }
             }

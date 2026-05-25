@@ -1,0 +1,4 @@
+Changes so far:
+-all *DB classes can (should) read and save databases from csv files
+-UI should be able to log a user correctly, main should start the program with the logged user
+-user has bare-bones login functionality, though so far it lacks necessary messages

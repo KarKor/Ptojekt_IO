@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TicketDB implements Database{
-    private List<Ticket> tickets=new ArrayList<>();
+    private ArrayList<Ticket> tickets=new ArrayList<>();
 
     @Override
     public void readDatabase(String filePath) {
@@ -16,7 +16,7 @@ public class TicketDB implements Database{
             while ((linia = br.readLine()) != null) {
                 String parts[] = linia.split(";");
                 tickets.add(new Ticket(
-                        parts[0], Integer.parseInt(parts[1]),parts[2]
+                        parts[0], Integer.parseInt(parts[1]),parts[2],parts[3]
                 ));
             }
         } catch (IOException e) {
@@ -44,5 +44,9 @@ public class TicketDB implements Database{
     public void removeTicket(String ticketID){
         tickets.removeIf(ticket -> ticket.getID().equals(ticketID));
         saveDatabase("tickets.csv");
+    }
+
+    public ArrayList<Ticket> getTickets() {
+        return tickets;
     }
 }

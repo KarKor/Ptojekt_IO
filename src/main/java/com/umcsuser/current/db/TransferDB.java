@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TransferDB implements Database{
-    private final List<Transfer> transfers = new ArrayList<>();
+    private final ArrayList<Transfer> transfers = new ArrayList<>();
 
     @Override
     public void readDatabase(String filePath) {
@@ -16,7 +16,7 @@ public class TransferDB implements Database{
             while ((linia = br.readLine()) != null) {
                 String[] parts = linia.split(";");
                 transfers.add(new Transfer(
-                        parts[0], parts[1], parts[2], parts[3], parts[4]
+                        parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]
                 ));
             }
         } catch (IOException e) {
@@ -50,5 +50,9 @@ public class TransferDB implements Database{
         for(Transfer transfer: transfers){
             System.out.println(transfer.toString());
         }
+    }
+
+    public ArrayList<Transfer> getTransfers() {
+        return transfers;
     }
 }

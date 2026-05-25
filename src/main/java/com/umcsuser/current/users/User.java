@@ -52,6 +52,6 @@ public abstract class User {
     }
 
     public String toCSV(){
-        return this.ID+';'+this.login+';'+this.password+';'+this.role;
+        return this.ID+';'+this.login+';'+this.password+';'+this.role.name()+";null";
     }
 }

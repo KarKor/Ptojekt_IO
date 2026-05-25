@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TrainDB implements Database{
-    private final List<Train> trains=new ArrayList<>();
+    private final ArrayList<Train> trains=new ArrayList<>();
 
     @Override
     public void readDatabase(String filePath) {
@@ -47,4 +47,7 @@ public class TrainDB implements Database{
         saveDatabase("trains.csv");
     }
 
+    public ArrayList<Train> getTrains() {
+        return trains;
+    }
 }
