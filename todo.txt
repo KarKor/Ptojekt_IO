@@ -1,0 +1,4 @@
+admin functionality
+conductor.giveFine() (już jebać to z tymi dyżurami)
+passenger.checkFines()
+ui

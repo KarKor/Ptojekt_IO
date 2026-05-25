@@ -17,6 +17,8 @@ public abstract class User {
         this.login = login;
         this.password = password;
         this.role = role;
+        transfers = new TransferDB();
+        transfers.readDatabase("transfers.csv");
     }
 
     public String getID() {
