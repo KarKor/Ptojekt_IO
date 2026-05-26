@@ -3,32 +3,21 @@ package com.umcsuser.current.db;
 import com.umcsuser.current.models.Transfer;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TransferDB implements Database{
-    private List<Transfer> transfers;
-
-    public List<Transfer> getTransfers() {
-        return transfers;
-    }
+    private final ArrayList<Transfer> transfers = new ArrayList<>();
 
     @Override
     public void readDatabase(String filePath) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String linia;
             while ((linia = br.readLine()) != null) {
-                String[] dane = linia.split(";");
-                if (dane.length >= 6) {
-                    String ID = dane[0];
-                    String startLocation = dane[1];
-                    String endLocation = dane[2];
-                    String startTime = dane[3];
-                    String endTime = dane[4];
-                    String trainID = dane[5];
-
-                    Transfer transfer = new Transfer(ID, startLocation, endLocation, startTime, endTime, trainID);
-                    transfers.add(transfer);
-                }
+                String[] parts = linia.split(";");
+                transfers.add(new Transfer(
+                        parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]
+                ));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -48,26 +37,22 @@ public class TransferDB implements Database{
     }
 
     public void addTransfer(Transfer transfer){
-        if (transfer != null) {
-            transfers.add(transfer);
-            System.out.println("Pomyślnie dodano nowy przejazd.");
-        }
+        transfers.add(transfer);
+        saveDatabase("transfers.csv");
     }
 
     public void removeTransfer(String transferID){
-        boolean isRemoved = transfers.removeIf(transfer -> transfer.getID().equals(transferID));
-
-        if (isRemoved) {
-            System.out.println("Usunięto przejazd o ID: " + transferID);
-        } else {
-            System.out.println("Nie znaleziono przejazdu o ID: " + transferID);
-        }
+        transfers.removeIf(transfer -> transfer.getID().equals(transferID));
+        saveDatabase("transfers.csv");
     }
-
 
     public void viewTransfers(){
         for(Transfer transfer: transfers){
             System.out.println(transfer.toString());
         }
+    }
+
+    public ArrayList<Transfer> getTransfers() {
+        return transfers;
     }
 }

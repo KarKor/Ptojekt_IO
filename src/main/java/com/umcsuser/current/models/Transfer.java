@@ -8,7 +8,7 @@ public class Transfer {
     private String trainID;
     private String ID;
 
-    public Transfer(String ID, String startLocation, String endLocation, String startTime, String endTime, String trainID){
+    public Transfer(String ID, String startLocation, String endLocation, String startTime, String endTime, String trainID) {
         this.endLocation = endLocation;
         this.endTime = endTime;
         this.ID = ID;

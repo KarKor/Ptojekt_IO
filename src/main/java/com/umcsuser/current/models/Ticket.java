@@ -4,11 +4,13 @@ public class Ticket {
     private String ID;
     private int price;
     private String transferID;
+    private String passengerID;
 
-    public Ticket(String ID, int price, String transferID) {
+    public Ticket(String ID, int price, String transferID, String passengerID) {
         this.ID = ID;
         this.price = price;
         this.transferID = transferID;
+        this.passengerID = passengerID;
     }
 
     public String getID() {
@@ -19,7 +21,22 @@ public class Ticket {
         return price;
     }
 
-    public String  toCSV() {
-        return this.ID + ";" + this.price + ";" + this.transferID;
+    @Override
+    public String toString() {
+        return "ID: '" + ID +
+                ", passengerID: '" + passengerID +
+                ", transferID: '" + transferID;
+    }
+
+    public String toCSV(){
+        return this.ID+';'+this.price+';'+this.transferID;
+    }
+
+    public String getPassengerID() {
+        return passengerID;
+    }
+
+    public String getTransferID() {
+        return transferID;
     }
 }

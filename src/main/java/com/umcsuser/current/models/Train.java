@@ -13,7 +13,7 @@ public class Train {
     private String company;
     private String ID;
 
-    public Train(String company, String ID, String model) {
+    public Train(String ID, String model,String company) {
         this.company = company;
         this.ID = ID;
         this.model=model;
@@ -21,11 +21,11 @@ public class Train {
         passengers=new ArrayList<>();
     }
 
-    public String toCSV() {
-        return this.ID + ";" + this.model + ";" + this.company;
-    }
-
     public String getID() {
         return ID;
+    }
+
+    public String toCSV(){
+        return this.ID+';'+this.model+';'+this.company+';';
     }
 }

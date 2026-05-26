@@ -1,13 +1,13 @@
 package com.umcsuser.current.db;
 
-import com.umcsuser.current.models.Train;
+import com.umcsuser.current.models.Fine;
+import com.umcsuser.current.models.Transfer;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 
-public class TrainDB implements Database{
-    private final ArrayList<Train> trains=new ArrayList<>();
+public class FineDB implements Database{
+    private final ArrayList<Fine> fines = new ArrayList<>();
 
     @Override
     public void readDatabase(String filePath) {
@@ -15,21 +15,19 @@ public class TrainDB implements Database{
             String linia;
             while ((linia = br.readLine()) != null) {
                 String[] parts = linia.split(";");
-                trains.add(
-                        new Train(parts[0], parts[1], parts[2]
-                        ));
+                fines.add(new Fine(
+                        parts[0], parts[1]));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
     public void saveDatabase(String filePath) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            for(Train train : trains){
-                writer.write(train.toCSV());
+            for(Fine fine: fines){
+                writer.write(fine.toCSV());
                 writer.newLine();
             }
         } catch (IOException e) {
@@ -37,17 +35,17 @@ public class TrainDB implements Database{
         }
     }
 
-    public void addTrain(Train train){
-        trains.add(train);
-        saveDatabase("trains.csv");
+    public void addFine(Fine fine){
+        fines.add(fine);
+        saveDatabase("fines.csv");
     }
 
-    public void removeTrain(String trainID){
-        trains.removeIf(train -> train.getID().equals(trainID));
-        saveDatabase("trains.csv");
+    public void removeFine(String fineID){
+        fines.removeIf(fine -> fine.getFineID().equals(fineID));
+        saveDatabase("fines.csv");
     }
 
-    public ArrayList<Train> getTrains() {
-        return trains;
+    public ArrayList<Fine> getFines() {
+        return fines;
     }
 }
