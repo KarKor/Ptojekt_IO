@@ -7,6 +7,12 @@ public class Main {
         UI ui = new UI();
 
         User user = ui.login();
-        ui.start(user);
+        if (user != null) {
+            while (true) {
+                ui.start(user);
+            }
+        } else {
+            System.out.println("Zamykanie programu...");
+        }
     }
 }

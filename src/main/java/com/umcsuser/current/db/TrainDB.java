@@ -11,6 +11,7 @@ public class TrainDB implements Database{
 
     @Override
     public void readDatabase(String filePath) {
+        trains.clear();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String linia;
             while ((linia = br.readLine()) != null) {
